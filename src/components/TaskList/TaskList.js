@@ -2,18 +2,16 @@ import React from "react";
 import { TaskItem } from "../TaskItem/TaskItem";
 import { TaskListStyled, Task } from "./TaskList.styled";
 
-export const TaskList = () => {
-  return (
-    <TaskListStyled>
-      <Task>
-        <TaskItem />
+export const TaskList = ({ tasks }) => {
+  const taskList = tasks.map(task => {
+    const { id, ...taskProps } = task;
+
+    return (
+      <Task key={id}>
+        <TaskItem {...taskProps} />
       </Task>
-      <Task>
-        <TaskItem />
-      </Task>
-      <Task>
-        <TaskItem />
-      </Task>
-    </TaskListStyled>
-  );
+    );
+  });
+
+  return <TaskListStyled>{taskList}</TaskListStyled>;
 };

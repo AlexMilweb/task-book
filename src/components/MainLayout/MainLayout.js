@@ -2,7 +2,7 @@ import React from "react";
 import { Header } from "../Header/Header";
 import { Filter } from "../Filter/Filter";
 import { TaskList } from "../TaskList/TaskList";
-import { MainLayoutStyled, Container } from "./MainLayout.styled.js";
+import { MainLayoutStyled, AppContainer } from "./MainLayout.styled.js";
 
 export const MainLayout = () => {
   const tasks = [
@@ -22,11 +22,11 @@ export const MainLayout = () => {
 
   return (
     <MainLayoutStyled>
-      <Container>
+      <AppContainer>
         <Header />
         <Filter />
         <TaskList tasks={tasks} />
-      </Container>
+      </AppContainer>
     </MainLayoutStyled>
   );
 };

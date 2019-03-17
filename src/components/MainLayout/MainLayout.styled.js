@@ -8,10 +8,10 @@ export const MainLayoutStyled = styled.div`
   background-color: rgba(0, 0, 0, 0.3);
 `;
 
-export const Container = styled.div`
+export const AppContainer = styled.div`
   padding: 15px;
   background-color: #333;
-  max-width: 500px;
+  max-width: 375px;
   width: 100%;
-  min-height: 800px;
+  min-height: 667px;
 `;

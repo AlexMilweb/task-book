@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
   h1, ul {

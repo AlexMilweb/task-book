@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
+    font-size: 14px;
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
@@ -21,5 +22,9 @@ export const GlobalStyle = createGlobalStyle`
 
   li {
     list-style: none;
+  }
+
+  input {
+    outline: none;
   }
 `;

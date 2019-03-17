@@ -1,6 +1,6 @@
 import React from "react";
 import { Header } from "../Header/Header";
-import { Filter } from "../Filter/Filter";
+import { FilterPanel } from "../FilterPanel/FilterPanel";
 import { TaskList } from "../TaskList/TaskList";
 import { MainLayoutStyled, AppContainer } from "./MainLayout.styled.js";
 
@@ -24,7 +24,7 @@ export const MainLayout = () => {
     <MainLayoutStyled>
       <AppContainer>
         <Header />
-        <Filter />
+        <FilterPanel />
         <TaskList tasks={tasks} />
       </AppContainer>
     </MainLayoutStyled>

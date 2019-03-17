@@ -9,15 +9,18 @@ export const MainLayout = () => {
   const tasks = [
     {
       id: 1,
-      label: "Drink coffee"
+      label: "Изучить уроки по React.js",
+      isChecked: false
     },
     {
       id: 2,
-      label: "Visite to shop"
+      label: "Сделать уборку",
+      isChecked: false
     },
     {
       id: 3,
-      label: "Learn React"
+      label: "Погулять на улице",
+      isChecked: true
     }
   ];
 

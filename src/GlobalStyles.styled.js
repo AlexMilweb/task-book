@@ -27,4 +27,9 @@ export const GlobalStyle = createGlobalStyle`
   input {
     outline: none;
   }
+
+  button {
+    border: none;
+    background-color: transparent;
+  }
 `;

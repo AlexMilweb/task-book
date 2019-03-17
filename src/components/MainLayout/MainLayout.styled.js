@@ -9,6 +9,7 @@ export const MainLayoutStyled = styled.div`
 `;
 
 export const AppContainer = styled.div`
+  position: relative;
   padding: 15px;
   background-color: #333;
   max-width: 375px;

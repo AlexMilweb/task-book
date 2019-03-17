@@ -2,6 +2,7 @@ import React from "react";
 import { Header } from "../Header/Header";
 import { FilterPanel } from "../FilterPanel/FilterPanel";
 import { TaskList } from "../TaskList/TaskList";
+import { AddTaskButton } from "../AddTaskButton/AddTaskButton";
 import { MainLayoutStyled, AppContainer } from "./MainLayout.styled.js";
 
 export const MainLayout = () => {
@@ -26,6 +27,7 @@ export const MainLayout = () => {
         <Header />
         <FilterPanel />
         <TaskList tasks={tasks} />
+        <AddTaskButton />
       </AppContainer>
     </MainLayoutStyled>
   );

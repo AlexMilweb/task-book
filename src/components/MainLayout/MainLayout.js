@@ -14,16 +14,10 @@ import {
   ButtonStyled
 } from "./MainLayout.styled.js";
 
-let indexId = 1;
-
 export const MainLayout = React.memo(() => {
-  const createTaskItem = label => {
-    return {
-      id: indexId,
-      label,
-      isDone: false
-    };
-  };
+  if (!localStorage.getItem("indexId")) {
+    localStorage.setItem("indexId", 1);
+  }
 
   const getIndexById = (tasks, id) => tasks.findIndex(el => el.id === id);
   const defaultTasks = localStorage.getItem("tasks")
@@ -34,7 +28,15 @@ export const MainLayout = React.memo(() => {
   const [taskName, setTaskName] = React.useState("");
   const [screen, setScreen] = React.useState("home");
 
-  const saveToLocalStorage = tasks =>
+  const createTaskItem = label => {
+    return {
+      id: `taskId_${localStorage.getItem("indexId")}`,
+      label,
+      isDone: false
+    };
+  };
+
+  const saveTasksToLocalStorage = tasks =>
     localStorage.setItem("tasks", JSON.stringify(tasks));
 
   const handleToggleTaskDone = id => {
@@ -52,7 +54,7 @@ export const MainLayout = React.memo(() => {
         ...oldTasks.slice(index + 1)
       ];
 
-      saveToLocalStorage(newArray);
+      saveTasksToLocalStorage(newArray);
       return newArray;
     });
   };
@@ -64,7 +66,7 @@ export const MainLayout = React.memo(() => {
         ...oldTasks.slice(0, index),
         ...oldTasks.slice(index + 1)
       ];
-      saveToLocalStorage(newArray);
+      saveTasksToLocalStorage(newArray);
 
       return newArray;
     });
@@ -81,11 +83,11 @@ export const MainLayout = React.memo(() => {
       return;
     }
 
-    indexId++;
+    localStorage.setItem("indexId", +localStorage.getItem("indexId") + 1);
 
     setTasks(oldTasks => {
       const newArray = [createTaskItem(taskName), ...oldTasks];
-      saveToLocalStorage(newArray);
+      saveTasksToLocalStorage(newArray);
 
       return newArray;
     });

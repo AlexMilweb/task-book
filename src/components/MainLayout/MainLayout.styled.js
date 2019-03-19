@@ -10,14 +10,34 @@ export const MainLayoutStyled = styled.div`
 
 export const AppContainer = styled.div`
   position: relative;
-  padding: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   background-color: #333;
   max-width: 375px;
   width: 100%;
   min-height: 667px;
+  overflow: hidden;
 
   @media (max-width: 1024px) {
     max-width: none;
     height: 100vh;
+    min-height: 0;
   }
+`;
+
+export const Content = styled.div`
+  display: flex;
+  transition: transform 0.3s;
+`;
+
+export const Screen = styled.div`
+  width: 100%;
+  flex-shrink: 0;
+  padding: 15px;
+`;
+
+export const Form = styled.form``;
+
+export const ButtonStyled = styled.button`
+  margin-top: 10px;
 `;

@@ -5,7 +5,7 @@ import { FilterPanelStyled } from "./FilterPanel.styled";
 export const FilterPanel = () => {
   return (
     <FilterPanelStyled>
-      <Field placeholder="Enter task name" />
+      <Field placeholder="Search task" isSearch />
     </FilterPanelStyled>
   );
 };

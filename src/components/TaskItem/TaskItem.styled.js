@@ -19,7 +19,7 @@ export const Label = styled.span`
   ${props =>
     props.isDone &&
     css`
-      color: #4dc145;
+      color: #999;
       text-decoration: line-through;
     `};
 `;

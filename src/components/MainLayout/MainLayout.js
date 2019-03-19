@@ -16,6 +16,8 @@ export const MainLayout = () => {
     };
   };
 
+  const getIndexById = (tasks, id) => tasks.findIndex(el => el.id === id);
+
   const [tasks, setTasks] = React.useState([
     createTaskItem("Изучить уроки по React.js"),
     createTaskItem("Сделать уборку"),
@@ -24,7 +26,8 @@ export const MainLayout = () => {
 
   const handleToggleTaskDone = id => {
     setTasks(oldTasks => {
-      const index = oldTasks.findIndex(el => el.id === id);
+      const index = getIndexById(oldTasks, id);
+
       const updateTask = {
         ...oldTasks[index],
         isDone: !oldTasks[index].isDone
@@ -38,12 +41,24 @@ export const MainLayout = () => {
     });
   };
 
+  const handleDeleteTask = id => {
+    setTasks(oldTasks => {
+      const index = getIndexById(oldTasks, id);
+
+      return [...oldTasks.slice(0, index), ...oldTasks.slice(index + 1)];
+    });
+  };
+
   return (
     <MainLayoutStyled>
       <AppContainer>
         <Header />
         <FilterPanel />
-        <TaskList tasks={tasks} onToggleTaskDone={handleToggleTaskDone} />
+        <TaskList
+          tasks={tasks}
+          onToggleTaskDone={handleToggleTaskDone}
+          onDeleteTask={handleDeleteTask}
+        />
         <AddTaskButton />
       </AppContainer>
     </MainLayoutStyled>

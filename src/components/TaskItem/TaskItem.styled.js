@@ -14,6 +14,7 @@ export const CheckboxStyled = styled.div`
 
 export const Label = styled.span`
   cursor: pointer;
+  user-select: none;
 
   ${props =>
     props.isDone &&
@@ -21,4 +22,19 @@ export const Label = styled.span`
       color: #4dc145;
       text-decoration: line-through;
     `};
+`;
+
+export const Buttons = styled.div`
+  display: flex;
+  margin-left: auto;
+`;
+
+export const Button = styled.button`
+  font-size: 0;
+`;
+
+export const TrashIconStyled = styled.svg`
+  color: rgb(168, 72, 72);
+  width: 20px;
+  height: 20px;
 `;

@@ -16,22 +16,26 @@ import {
 
 let indexId = 1;
 
-export const MainLayout = () => {
+export const MainLayout = React.memo(() => {
   const createTaskItem = label => {
     return {
-      id: indexId++,
+      id: indexId,
       label,
       isDone: false
     };
   };
 
   const getIndexById = (tasks, id) => tasks.findIndex(el => el.id === id);
+  const defaultTasks = localStorage.getItem("tasks")
+    ? JSON.parse(localStorage.getItem("tasks"))
+    : [];
 
-  const [tasks, setTasks] = React.useState([
-    createTaskItem("Task for example")
-  ]);
+  const [tasks, setTasks] = React.useState(defaultTasks);
   const [taskName, setTaskName] = React.useState("");
   const [screen, setScreen] = React.useState("home");
+
+  const saveToLocalStorage = tasks =>
+    localStorage.setItem("tasks", JSON.stringify(tasks));
 
   const handleToggleTaskDone = id => {
     setTasks(oldTasks => {
@@ -42,19 +46,27 @@ export const MainLayout = () => {
         isDone: !oldTasks[index].isDone
       };
 
-      return [
+      const newArray = [
         ...oldTasks.slice(0, index),
         updateTask,
         ...oldTasks.slice(index + 1)
       ];
+
+      saveToLocalStorage(newArray);
+      return newArray;
     });
   };
 
   const handleDeleteTask = id => {
     setTasks(oldTasks => {
       const index = getIndexById(oldTasks, id);
+      const newArray = [
+        ...oldTasks.slice(0, index),
+        ...oldTasks.slice(index + 1)
+      ];
+      saveToLocalStorage(newArray);
 
-      return [...oldTasks.slice(0, index), ...oldTasks.slice(index + 1)];
+      return newArray;
     });
   };
 
@@ -69,8 +81,13 @@ export const MainLayout = () => {
       return;
     }
 
+    indexId++;
+
     setTasks(oldTasks => {
-      return [createTaskItem(taskName), ...oldTasks];
+      const newArray = [createTaskItem(taskName), ...oldTasks];
+      saveToLocalStorage(newArray);
+
+      return newArray;
     });
     setTaskName("");
     setScreen("home");
@@ -124,4 +141,4 @@ export const MainLayout = () => {
       </AppContainer>
     </MainLayoutStyled>
   );
-};
+});

@@ -15,4 +15,9 @@ export const AppContainer = styled.div`
   max-width: 375px;
   width: 100%;
   min-height: 667px;
+
+  @media (max-width: 1024px) {
+    max-width: none;
+    height: 100vh;
+  }
 `;

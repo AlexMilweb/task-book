@@ -2,11 +2,16 @@ import React from "react";
 import { Checkbox } from "../Checkbox/Checkbox";
 import { TaskItemStyled, CheckboxStyled, Label } from "./TaskItem.styled";
 
-export const TaskItem = ({ label, isChecked }) => {
+export const TaskItem = ({ id, label, isDone, onToggleTaskDone }) => {
   return (
-    <TaskItemStyled>
-      <CheckboxStyled as={Checkbox} isChecked={isChecked} />
-      <Label isChecked={isChecked}>{label}</Label>
+    <TaskItemStyled htmlFor={id}>
+      <CheckboxStyled
+        id={id}
+        as={Checkbox}
+        isChecked={isDone}
+        onChange={onToggleTaskDone}
+      />
+      <Label isDone={isDone}>{label}</Label>
     </TaskItemStyled>
   );
 };

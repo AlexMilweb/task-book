@@ -6,30 +6,44 @@ import { AddTaskButton } from "../AddTaskButton/AddTaskButton";
 import { MainLayoutStyled, AppContainer } from "./MainLayout.styled.js";
 
 export const MainLayout = () => {
-  const tasks = [
-    {
-      id: 1,
-      label: "Изучить уроки по React.js",
-      isChecked: false
-    },
-    {
-      id: 2,
-      label: "Сделать уборку",
-      isChecked: false
-    },
-    {
-      id: 3,
-      label: "Погулять на улице",
-      isChecked: true
-    }
-  ];
+  let indexId = 1;
+
+  const createTaskItem = label => {
+    return {
+      id: indexId++,
+      label,
+      isDone: false
+    };
+  };
+
+  const [tasks, setTasks] = React.useState([
+    createTaskItem("Изучить уроки по React.js"),
+    createTaskItem("Сделать уборку"),
+    createTaskItem("Погулять на улице")
+  ]);
+
+  const handleToggleTaskDone = id => {
+    setTasks(oldTasks => {
+      const index = oldTasks.findIndex(el => el.id === id);
+      const updateTask = {
+        ...oldTasks[index],
+        isDone: !oldTasks[index].isDone
+      };
+
+      return [
+        ...oldTasks.slice(0, index),
+        updateTask,
+        ...oldTasks.slice(index + 1)
+      ];
+    });
+  };
 
   return (
     <MainLayoutStyled>
       <AppContainer>
         <Header />
         <FilterPanel />
-        <TaskList tasks={tasks} />
+        <TaskList tasks={tasks} onToggleTaskDone={handleToggleTaskDone} />
         <AddTaskButton />
       </AppContainer>
     </MainLayoutStyled>

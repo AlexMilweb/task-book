@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const TaskItemStyled = styled.div`
+export const TaskItemStyled = styled.label`
   display: flex;
   align-items: center;
   padding-top: 10px;
@@ -12,9 +12,11 @@ export const CheckboxStyled = styled.div`
   margin-right: 15px;
 `;
 
-export const Label = styled.div`
+export const Label = styled.span`
+  cursor: pointer;
+
   ${props =>
-    props.isChecked &&
+    props.isDone &&
     css`
       color: #4dc145;
       text-decoration: line-through;

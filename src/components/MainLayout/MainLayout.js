@@ -117,9 +117,10 @@ export const MainLayout = () => {
             </Form>
           </Screen>
         </Content>
-        {screen === "home" && (
-          <AddTaskButton onClick={changeScreen("addTask")} />
-        )}
+        <AddTaskButton
+          onClick={changeScreen(screen === "home" ? "addTask" : "home")}
+          isReturnMod={screen === "addTask"}
+        />
       </AppContainer>
     </MainLayoutStyled>
   );

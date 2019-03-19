@@ -7,6 +7,7 @@ export const CheckboxWrapper = styled.div`
   border-radius: 50%;
   box-shadow: inset 0 0 0 1px #2b7de9;
   cursor: pointer;
+  flex-shrink: 0;
 
   ${props =>
     props.isChecked &&

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const AddTaskButtonStyled = styled.button`
   position: absolute;
@@ -20,9 +20,27 @@ export const AddTaskButtonStyled = styled.button`
     width: 20px;
     height: 2px;
     background-color: white;
+    transition: transform 0.3s, transform-origin 0.3s;
   }
 
   &::before {
     transform: translate(-50%, -50%) rotate(90deg);
   }
+
+  ${props =>
+    props.isReturnMod &&
+    css`
+      &::before,
+      &::after {
+        transform-origin: left center;
+      }
+
+      &::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+
+      &::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+    `};
 `;

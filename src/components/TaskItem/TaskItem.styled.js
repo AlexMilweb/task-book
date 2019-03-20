@@ -34,7 +34,7 @@ export const Button = styled.button`
 `;
 
 export const TrashIconStyled = styled.svg`
-  color: rgb(251, 193, 0);
+  color: white;
   width: 17px;
   height: 17px;
 `;

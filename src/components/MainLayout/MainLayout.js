@@ -139,7 +139,6 @@ export const MainLayout = React.memo(() => {
               onToggleTaskDone={handleToggleTaskDone}
               onDeleteTask={handleDeleteTask}
             />
-            <InfoPanel>{`Done (${countDoneTasks}) Active (${countActiveTasks})`}</InfoPanel>
           </Screen>
           <Screen>
             <Form onSubmit={handleAddTask}>
@@ -154,6 +153,7 @@ export const MainLayout = React.memo(() => {
             </Form>
           </Screen>
         </Content>
+        <InfoPanel>{`Done (${countDoneTasks}) Active (${countActiveTasks})`}</InfoPanel>
         <AddTaskButton
           onClick={changeScreen(screen === "home" ? "addTask" : "home")}
           isReturnMod={screen === "addTask"}

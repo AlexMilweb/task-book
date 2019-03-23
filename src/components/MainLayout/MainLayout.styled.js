@@ -34,7 +34,6 @@ export const Screen = styled.div`
   width: 100%;
   flex-shrink: 0;
   padding: 15px;
-  min-height: calc(100vh - 50px);
 `;
 
 export const Form = styled.form``;

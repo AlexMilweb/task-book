@@ -25,8 +25,10 @@ export const MainLayout = React.memo(() => {
     : [];
 
   const [tasks, setTasks] = React.useState(defaultTasks);
+  const [filteredTasks, setFilteredTasks] = React.useState([]);
   const [taskName, setTaskName] = React.useState("");
   const [screen, setScreen] = React.useState("home");
+  const [valueSearch, setValueSearch] = React.useState("");
 
   const createTaskItem = label => {
     return {
@@ -110,15 +112,26 @@ export const MainLayout = React.memo(() => {
     setScreen(screen);
   };
 
+  const handleValueSearch = e => {
+    const value = e.target.value;
+    setValueSearch(value);
+
+    const filteredTasks = tasks.filter(task => {
+      return task.label.toLowerCase().indexOf(value.toLowerCase()) !== -1;
+    });
+
+    setFilteredTasks(filteredTasks);
+  };
+
   return (
     <MainLayoutStyled>
       <AppContainer>
         <Header />
         <Content style={getTransformContent()}>
           <Screen>
-            <FilterPanel />
+            <FilterPanel value={valueSearch} onChange={handleValueSearch} />
             <TaskList
-              tasks={tasks}
+              tasks={valueSearch.length ? filteredTasks : tasks}
               onToggleTaskDone={handleToggleTaskDone}
               onDeleteTask={handleDeleteTask}
             />

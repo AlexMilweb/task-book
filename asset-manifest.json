@@ -1,0 +1,11 @@
+{
+  "main.js": "/task-book/static/js/main.8072d8bb.chunk.js",
+  "main.js.map": "/task-book/static/js/main.8072d8bb.chunk.js.map",
+  "runtime~main.js": "/task-book/static/js/runtime~main.6cc9eead.js",
+  "runtime~main.js.map": "/task-book/static/js/runtime~main.6cc9eead.js.map",
+  "static/js/2.fbb26b79.chunk.js": "/task-book/static/js/2.fbb26b79.chunk.js",
+  "static/js/2.fbb26b79.chunk.js.map": "/task-book/static/js/2.fbb26b79.chunk.js.map",
+  "index.html": "/task-book/index.html",
+  "precache-manifest.17ba587bf97431610e183b9f49ea2b8d.js": "/task-book/precache-manifest.17ba587bf97431610e183b9f49ea2b8d.js",
+  "service-worker.js": "/task-book/service-worker.js"
+}

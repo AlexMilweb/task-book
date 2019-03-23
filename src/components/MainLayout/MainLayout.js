@@ -11,7 +11,8 @@ import {
   Content,
   Screen,
   Form,
-  ButtonStyled
+  ButtonStyled,
+  InfoPanel
 } from "./MainLayout.styled.js";
 
 export const MainLayout = React.memo(() => {
@@ -123,6 +124,9 @@ export const MainLayout = React.memo(() => {
     setFilteredTasks(filteredTasks);
   };
 
+  const countDoneTasks = tasks.filter(task => task.isDone).length;
+  const countActiveTasks = tasks.length - countDoneTasks;
+
   return (
     <MainLayoutStyled>
       <AppContainer>
@@ -135,6 +139,7 @@ export const MainLayout = React.memo(() => {
               onToggleTaskDone={handleToggleTaskDone}
               onDeleteTask={handleDeleteTask}
             />
+            <InfoPanel>{`Done (${countDoneTasks}) Active (${countActiveTasks})`}</InfoPanel>
           </Screen>
           <Screen>
             <Form onSubmit={handleAddTask}>
